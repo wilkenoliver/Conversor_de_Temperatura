@@ -1,0 +1,54 @@
+function celsiusParaFahrenheit(celsius) {
+    return (celsius * 9 / 5) + 32;
+}
+
+function fahrenheitParaCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5 / 9;
+}
+
+function celsiusParaKelvin(celsius) {
+    return celsius + 273.15;
+}
+
+function kelvinParaCelsius(kelvin) {
+    return kelvin - 273.15;
+}
+
+function converterTemperatura(valor, origem, destino) {
+    origem = origem.toUpperCase();
+    destino = destino.toUpperCase();
+
+    if (origem === destino) {
+        return valor;
+    }
+
+    let emCelsius;
+
+    if (origem === "C") {
+        emCelsius = valor;
+    } else if (origem === "F") {
+        emCelsius = fahrenheitParaCelsius(valor);
+    } else if (origem === "K") {
+        emCelsius = kelvinParaCelsius(valor);
+    } else {
+        console.log("Escala de origem inválida!");
+        return null;
+    }
+
+    if (destino === "C") {
+        return emCelsius;
+    } else if (destino === "F") {
+        return celsiusParaFahrenheit(emCelsius);
+    } else if (destino === "K") {
+        return celsiusParaKelvin(emCelsius);
+    } else {
+        console.log("Escala de destino inválida!");
+        return null;
+    }
+}
+
+console.log(`0°C em Fahrenheit: ${converterTemperatura(0, "C", "F")}°F`);
+console.log(`100°C em Fahrenheit: ${converterTemperatura(100, "C", "F")}°F`);
+console.log(`32°F em Celsius: ${converterTemperatura(32, "F", "C")}°C`);
+console.log(`0°C em Kelvin: ${converterTemperatura(0, "C", "K")}K`);
+console.log(`300K em Celsius: ${converterTemperatura(300, "K", "C")}°C`);
